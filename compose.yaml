@@ -3,8 +3,8 @@ services:
     container_name: budget_node
     build: app 
     networks:
-      - frontend
-      - backend
+      - frontend                                # Seperate NGINX and MYSQL network so
+      - backend                                 # Only Node may communicate with both.
     volumes:
       - ./app/src:/usr/src/app/src
       - ./app/public:/usr/src/app/public
@@ -15,9 +15,9 @@ services:
     image: mysql:8.0
     container_name: budget_db
     ports:
-      - 3308:3306
+      - 3308:3306                               # DEVELOPMENT ONLY
     environment:
-      MYSQL_ROOT_PASSWORD: DEVELOPMENT
+      MYSQL_ROOT_PASSWORD: DEVELOPMENT          # DEVELOPMENT ONLY
       MYSQL_DATABASE: budget_tracker 
     networks:
       - backend 
@@ -29,7 +29,7 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "3000:80"
+      - "3000:80"                             # PORT 3000 is only for dev
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./static:/usr/share/nginx/html
@@ -37,7 +37,7 @@ services:
       - node
     restart: always
     networks:
-      - backend
+      - frontend
 volumes:
   budget_db:
 networks:
