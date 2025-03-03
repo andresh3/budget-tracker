@@ -1,13 +1,21 @@
 services:
-  node:
-    container_name: budget_node
+  react:
+    container_name: react 
     build: app 
     networks:
-      - frontend                                # Seperate NGINX and MYSQL network so
-      - backend                                 # Only Node may communicate with both.
+      - frontend
     volumes:
-      - ./app/src:/usr/src/app/src
-      - ./app/public:/usr/src/app/public
+      - ./app/src:/usr/src/app/src              # Defining our source code and public files as a volume allows
+      - ./app/public:/usr/src/app/public        # use to work on them live and have them update.
+
+  express:
+    container_name: express
+    build: api
+    networks:
+      - backend                                 # The API server should be the only one that can operate on
+      - frontend                                # Both the front-end and back-end networks.
+    volumes:
+      - ./api/src:/usr/src/app/src
     depends_on:
       - budget_db
 
@@ -34,7 +42,7 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./static:/usr/share/nginx/html
     depends_on:
-      - node
+      - react 
     restart: always
     networks:
       - frontend
