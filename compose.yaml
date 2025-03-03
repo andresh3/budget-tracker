@@ -1,0 +1,15 @@
+
+services:
+  node:
+    build: app 
+    ports:
+      - "3000:3000"
+    networks:
+      - frontend
+    volumes:
+      - ./app/src:/usr/src/app/src
+      - ./app/public:/usr/src/app/public
+
+networks:
+  frontend:
+  backend:
