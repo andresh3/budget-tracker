@@ -1,13 +1,14 @@
 services:
   react:
     container_name: react 
-    build: app 
+    build: react-app 
     networks:
       - frontend
-    volumes:
-      - ./app/src:/usr/src/app/src              # Defining our source code and public files as a volume allows
-      - ./app/public:/usr/src/app/public        # use to work on them live and have them update.
-
+    volumes:                                    
+      - ./react-app/src:/usr/src/app/src              # Defining our source code and public files as a volume allows
+      - ./react-app/public:/usr/src/app/public        # use to work on them live and have them update.
+                                                # Remind yourself that the REACT component does not need authentication
+                                                # and that we want to allow "local use" i.e., session storage
   express:
     container_name: express
     build: api
