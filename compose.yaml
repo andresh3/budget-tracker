@@ -19,6 +19,8 @@ services:
       - ./api/src:/usr/src/app/src
     depends_on:
       - budget_db
+    environment:
+      ACCESS_TOKEN_SECRET: HELLOWORLD           # DEVELOPMENT TEMPORARY; ACCESS_TOKEN_SECRET will need to be random and shared later
 
   budget_db:
     image: mysql:8.0

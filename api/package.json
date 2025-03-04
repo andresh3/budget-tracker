@@ -1,8 +1,8 @@
 {
-  "//":[
-      "Currently nodemon is used to monitor for development",
-      "An additional development script will be added to reduce",
-      "waste of resources."
+  "//": [
+    "Currently nodemon is used to monitor for development",
+    "An additional development script will be added to reduce",
+    "waste of resources."
   ],
   "name": "api",
   "version": "1.0.0",
@@ -16,7 +16,9 @@
     "start": "nodemon"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.9"
   }
 }
