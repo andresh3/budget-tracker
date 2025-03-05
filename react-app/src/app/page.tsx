@@ -1,52 +1,28 @@
-'use client'
+import './Signup.css';
+import Image from 'next/image';
+import email_icon from '../Assets/email.png';
+import Link from 'next/link';
 
-import React, { useState } from "react";
-import { useForm } from "@/hooks/useForm";
 
-export default function Login()
-{
-    const initialState = {
-        email: "",
-        password: "",
-    };
-
-    const { onChange, onSubmit, values } = useForm(
-        loginUserCallback,
-        initialState
-    );
-
-    async function loginUserCallback() {
-        console.log(values.email);
-        console.log(values.password);
-    }
-
+export default function Signup() {
     return (
-        <form onSubmit={onSubmit}>
-            <div>
-                <input
-                    name='email'
-                    id='email'
-                    type='email'
-                    placeholder='Email'
-                    onChange={onChange}
-                    required
-                />
-                <input
-                    name='password'
-                    id='password'
-                    type='password'
-                    placeholder='Password'
-                    onChange={onChange}
-                    required
-                />
-
-                <button
-                    type='submit'
-                >
-                    Login
-                </button>
-            </div>
-        </form>
-    );
+        <div className='container'>
+            <div className="text">Sign Up</div>
+            <div className="underline"></div>
+                <div className='signup-box'>
+                        <div className='header'>
+                        </div>
+                <div className="inputs">
+                    <div className="input">
+                    <Image src={email_icon} alt="" />
+                        <input type="email" placeholder='Email / Phone Number'/>
+                    </div>
+                    <Link href="/dashboard"><button className="continue-button">Continue</button></Link>
+                        <div className="underline-black"></div>
+                        <Link href="/login"><button className="back-button">Back to Login</button></Link>
+                </div>
+        </div>
+    </div>
+    )
 }
 
