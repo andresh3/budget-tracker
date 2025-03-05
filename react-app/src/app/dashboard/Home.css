@@ -1,0 +1,39 @@
+.container {
+    max-width: 400px;
+    margin-top: 50px;
+    width: 100%;
+    color: black;
+}
+.dropdown {
+    text-align-last: center;
+    max-width: 350px;
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    border-radius: 15px;
+    color: black;
+}
+
+.calendar {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-top: 15px; 
+    margin-left: 15px; 
+    margin-right: 15px; 
+    margin-bottom: 15px; 
+    border-radius: 15px;
+    align-items: center;
+    border: 2px solid black;
+
+}
+.calendar-box {
+    background-color: white;
+    max-width: 350px;
+    align-items: center;
+    margin: 15px;
+    border-radius: 15px;
+    height: 250px;
+    border: 1px;
+
+}
